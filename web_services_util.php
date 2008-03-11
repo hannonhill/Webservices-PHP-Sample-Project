@@ -41,7 +41,7 @@ function nullPageValues(&$page)
 {
     //Never, ever send an entity type. This will lead to an error.
 	unset($page['entityType']);
-    //Null out the various relationship paths in favor of the ids 
+    //Null out the various relationship ids in favor of the paths if possible 
 	if ($page['parentFolderPath'] != null)
 	    unset($page['parentFolderId']);
 	if ($page['configurationSetPath'] != null)
