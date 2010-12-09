@@ -116,8 +116,8 @@ function isSuccess($response)
 
 function _nullPageConfiguration(&$thisPConf)
 {
-	if ($thisPConf->stylesheetPath!=null)
-		unset($thisPConf->stylesheetId);
+	if ($thisPConf->formatPath!=null)
+		unset($thisPConf->formatId);
 	if ($thisPConf->templatePath!=null)
 		unset($thisPConf->templateId);
 	unset($thisPConf->entityType);
@@ -141,8 +141,8 @@ function _nullPageRegion(&$thisPReg)
 	unset($thisPReg->entityType);
 	if ($thisPReg->blockPath!=null)
 		unset($thisPReg->blockId);
-	if ($thisPReg->stylesheetPath!=null)
-		unset($thisPReg->stylesheetId);
+	if ($thisPReg->formatPath!=null)
+		unset($thisPReg->formatId);
 	unset($thisPReg->entityType);	
 }
 
