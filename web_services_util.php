@@ -39,24 +39,48 @@
  */
 function nullPageValues(&$page)
 {
-    //Never, ever send an entity type. This will lead to an error.
+    //Never send an entityType. This will lead to an error.
 	unset($page['entityType']);
-    //Null out the various relationship ids in favor of the paths if possible 
-	if ($page['parentFolderPath'] != null)
-	    unset($page['parentFolderId']);
-	if ($page['configurationSetPath'] != null)
-		unset($page['configurationSetId']);
-	if ($page['expirationFolderPath'] != null)
-		unset($page['expirationFolderId']);
-	if ($page['metadataSetPath'] != null)
-		unset($page['metadataSetId']);
-    //Null out the path in favor of the id
-	if ($page['path'] != null)
-		unset($page['id']);
+	
+    // Null out the various relationship paths in favor of ids if possible 
+    
+	if ($page['parentFolderId'] != null)
+	    unset($page['parentFolderPath']);
+	    
+	// If a contentTypeId or contenTypePath use one of those instead of 
+	// configurationSetId or configurationSetPath
+	if ($page['contentTypeId'] != null or $page['contentTypePath'] != null)
+	{
+        unset($page['configurationSetId']);
+        unset($page['configurationSetPath']);
+        if ($page['contentTypeId'] != null)
+            unset($page['contentTypePath']);
+        else
+            unset($page['contentTypeId']);
+	}
+	else
+	{
+        unset($page['contentTypeId']);
+        unset($page['contentTypePath']);
+		if ($page['configurationSetId'] != null)
+		    unset($page['configurationSetPath']);
+		else
+		    unset($page['configurationSetId']);
+	}
+	
+	if ($page['expirationFolderId'] != null)
+		unset($page['expirationFolderPath']);
+	else
+	    unset($page['expirationFolderId']);
 		
+	if ($page['metadataSetId'] != null)
+		unset($page['metadataSetPath']);
+		
+    // Null out the path in favor of the id
+	if ($page['id'] != null)
+		unset($page['path']);
 
-    //If the page has structured data, null out the structured data
-    //relationships as well
+    // If the page has structured data, null out the structured data relationships
 	$sData = $page['structuredData'];
     if ($sData != null)
     {
@@ -262,8 +286,4 @@ function _nullStructuredData(&$sDataNodes)
 			_nullStructuredDataNode($sDataNodes);
     }
 }
-
-
-
-
 ?>
