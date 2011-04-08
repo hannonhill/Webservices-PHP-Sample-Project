@@ -15,9 +15,6 @@ if ($reply->readReturn->success == 'true') {
 	$metadata = $asset["metadata"];
 	$title = $metadata->title;
 	
-	// Null values
-	nullPageValues($asset);
-	
 	// Update title
 	$title = date('l dS \of F Y h:i:s A');
 	$metadata->title = $title;
