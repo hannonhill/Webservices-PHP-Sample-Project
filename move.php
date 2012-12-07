@@ -1,10 +1,11 @@
 <?php
 // Move/Rename an asset
 
+$soapURL = "http://localhost:8080/ws/services/AssetOperationService?wsdl";
 $client = new SoapClient 
 ( 
-	"http://localhost:8080/ws/services/AssetOperationService?wsdl", 
-	array ('trace' => 1 ) 
+	$soapURL, 
+	array ('trace' => 1, 'location' => str_replace('?wsdl', '', $soapURL)) 
 );	
 $auth = array ('username' => 'admin', 'password' => 'admin' );
 
@@ -19,7 +20,6 @@ $destFolderIdentifier = array
 // Optional if you're renaming not moving
 (
 	'id' =>'Your-New-Folder-ID',
-
 	'type' => 'folder'
 );
 
