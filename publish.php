@@ -16,10 +16,23 @@ $identifier = array
 	'type' => 'page'
 );
 
-$publishParams = array ('authentication' => $auth, 'identifier' => $identifier, 'unpublish' => false); 
+$destinationIdentifier = array
+(
+	// ID or path of the destination
+	'id' => 'Your-Destination-ID-Here',
+	'type' => 'destination'
+);
+
+$publishInformation = array
+(
+	'identifier' => $identifier,
+ 	'destinations' => array ($destinationIdentifier), // This is optional, not providing this will result in publishing to all enabled destinations available to authenticating user 
+	'unpublish' => false // This is optional, default is false
+);
+
+$publishParams = array ('authentication' => $auth, 'publishInformation' => $publishInformation); 
 $reply = $client->publish($publishParams);
 
-//FYI: publishes to all available destinations, live and test - can't limit this 
 if ($reply->publishReturn->success=='true')
 	echo "Success: Published.";
 else

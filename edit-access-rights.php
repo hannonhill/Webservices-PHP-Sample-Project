@@ -32,8 +32,7 @@ if ($reply->readAccessRightsReturn->success=='true')
 	$editParams = array
 	(
 		'authentication' => $auth, 
-		'accessRightsInformation' => $accessRightsInformation, 
-		'applyToChildren' => false 
+		'accessRightsInformation' => $accessRightsInformation
 	);
 
     $reply = $client->editAccessRights($editParams);
