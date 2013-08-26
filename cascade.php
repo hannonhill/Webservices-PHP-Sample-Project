@@ -10,6 +10,7 @@ $identifier = $obj->identifierById($type, $id);
 $acl= $obj->createACL($name, $level, $type);
 $bool = $obj->result($reply);
 $reply = $obj->listSites();
+$reply = $obj->listSubscribers($identifier);
 $reply = $obj->read($identifier);
 $reply = $obj->readWorkflowSettings($identifier);
 $reply = $obj->readAccessRights($identifier);
@@ -21,6 +22,7 @@ $reply = $obj->move($identifier, $destIdentifier, $newName, $doWorkflow = false)
 $reply = $obj->create($asset);
 $reply = $obj->copy($identifier, $destIdentifier, $newName);
 $reply = $obj->delete($identifier);
+$reply = $obj->publish($identifier, $destIdentifiers, $unpublish);
 
 $array = $obj->objectToArray($object);
 $object = $obj->arrayToObject($array);
@@ -132,6 +134,15 @@ class Cascade
 		return $reply->listSitesReturn;
 	}
 	/*
+	Returns list of subscribers
+	*/
+	function listSubscribers($identifier)
+	{
+		$params = array ('authentication' => $this->auth, 'identifier' => $identifier);
+		$reply = $this->client->listSubscribers($params);
+		return $reply->listSubscribersReturn;
+	}
+	/*
 	Returns readReturn from identifier
 	*/
 	function read($identifier)
@@ -229,6 +240,27 @@ class Cascade
 		$params = array ('authentication' => $this->auth, 'identifier' => $identifier);
 		$reply = $this->client->delete($params);
 		return $reply->deleteReturn;
+	}
+	/*
+	Returns publishReturn from identifier
+	*/
+	function publish($identifier, $destIdentifiers = false, $unpublish = false)
+	{
+		$publishInformation = array
+		(
+			'identifier' => $identifier,
+			'unpublish' => $unpublish
+		);
+		if($destIdentifiers)
+		{
+			if(is_array($destIdentifiers))
+				$publishInformation['destinations'] = $destIdentifiers;
+			else
+				$publishInformation['destinations'] = array($destIdentifiers);
+		}
+		$params = array ('authentication' => $this->auth, 'publishInformation' => $publishInformation);
+		$reply = $this->client->publish($params);
+		return $reply->publishReturn;
 	}
 	/*
 	For converting the multi-dimensional object to a multi-dimensional array
