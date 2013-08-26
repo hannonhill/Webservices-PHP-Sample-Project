@@ -1,4 +1,31 @@
 <?php
+/*
+Function List:
+$obj = new Cascade($username, $password, $domain); //wrap in try/catch
+$obj->changeAuth($username, $password); //wrap in try/catch
+$identifier = $obj->identifier($type, $path, $siteName);
+$identifier = $obj->identifierByPath($type, $path, $siteName);
+$identifier = $obj->identifier($type, $id);
+$identifier = $obj->identifierById($type, $id);
+$acl= $obj->createACL($name, $level, $type);
+$bool = $obj->result($reply);
+$reply = $obj->listSites();
+$reply = $obj->read($identifier);
+$reply = $obj->readWorkflowSettings($identifier);
+$reply = $obj->readAccessRights($identifier);
+$reply = $obj->search($searchInfo);
+$reply = $obj->edit($asset);
+$reply = $obj->editWorkflowSettings($workflowSettings, $childrenInherit, $childrenRequire);
+$reply = $obj->editAccessRights($acls, $children);
+$reply = $obj->move($identifier, $destIdentifier, $newName, $doWorkflow = false);
+$reply = $obj->create($asset);
+$reply = $obj->copy($identifier, $destIdentifier, $newName);
+$reply = $obj->delete($identifier);
+
+$array = $obj->objectToArray($object);
+$object = $obj->arrayToObject($array);
+$obj->test($arr);
+*/
 class Cascade
 {
 	private $auth;
