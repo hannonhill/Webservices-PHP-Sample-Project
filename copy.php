@@ -9,13 +9,13 @@ $auth = array ('username' => 'admin', 'password' => 'admin' );
 
 $identifier = array 
 (
-	'path' => array(path => '/my-xml-block'),
+	'path' => array('path' => '/my-xml-block'),
 	'type' => 'block'
 );
 
 $destFolderIdentifier = array 
 (
-	'path' => array(path => '/my-folder'),
+	'path' => array('path' => '/my-folder'),
 	'type' => 'folder'
 );
 

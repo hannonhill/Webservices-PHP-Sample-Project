@@ -25,7 +25,7 @@ if ($reply->listSubscribersReturn->success=='true')
 		echo "NONE\r\n";
 		exit;
 	}
-	else if (!is_array($subscribers)) // For less than 2 eleements, the returned object isn't an array
+	else if (!is_array($subscribers)) // For less than 2 elements, the returned object isn't an array
 		$subscribers=array($subscribers);
 		
 	foreach($subscribers as $identifier)

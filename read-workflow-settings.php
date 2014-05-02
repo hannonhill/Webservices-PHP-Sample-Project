@@ -24,7 +24,7 @@ if ($reply->readWorkflowSettingsReturn->success=='true')
 	$workflowDefinitions = $reply->readWorkflowSettingsReturn->workflowSettings->workflowDefinitions->assetIdentifier;
 	if (sizeof($workflowDefinitions)==0)
 		$workflowDefinitions = array();
-	else if (!is_array($workflowDefinitions)) // For less than 2 eleements, the returned object isn't an array
+	else if (!is_array($workflowDefinitions)) // For less than 2 elements, the returned object isn't an array
 		$workflowDefinitions=array($workflowDefinitions);		
 	echo "\r\nWorkflow definitions: ";
 	foreach($workflowDefinitions as $identifier)
@@ -33,7 +33,7 @@ if ($reply->readWorkflowSettingsReturn->success=='true')
 	$inheritedWorkflowDefinitions = $reply->readWorkflowSettingsReturn->workflowSettings->inheritedWorkflowDefinitions->assetIdentifier;
 	if (sizeof($inheritedWorkflowDefinitions)==0)
 		$inheritedWorkflowDefinitions = array();
-	else if (!is_array($inheritedWorkflowDefinitions)) // For less than 2 eleements, the returned object isn't an array
+	else if (!is_array($inheritedWorkflowDefinitions)) // For less than 2 elements, the returned object isn't an array
 		$inheritedWorkflowDefinitions=array($inheritedWorkflowDefinitions);
 	echo "\r\nInherited workflow definitions: ";
 	foreach($inheritedWorkflowDefinitions as $identifier)
