@@ -4,7 +4,7 @@ $client = new SoapClient
 ( 
 	$soapURL, 
 	array ('trace' => 1, 'location' => str_replace('?wsdl', '', $soapURL)) 
-);	
+);
 $auth = array ('username' => 'admin', 'password' => 'admin' );
 
 $identifier = array 
