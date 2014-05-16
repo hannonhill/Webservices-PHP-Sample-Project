@@ -4,12 +4,12 @@ $client = new SoapClient
 ( 
 	$soapURL, 
 	array ('trace' => 1, 'location' => str_replace('?wsdl', '', $soapURL)) 
-);	
+);
 $auth = array ('username' => 'admin', 'password' => 'admin' );
 
 $identifier = array 
 (
-	'path' => array(path => '/my-xml-block'),
+	'path' => array('path' => '/my-xml-block'),
 	'type' => 'block'
 );
 

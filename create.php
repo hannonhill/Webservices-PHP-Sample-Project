@@ -11,7 +11,7 @@ $identifier = array
 (
 	'path' => array
 	(
-		path => '/my-xml-block'
+		'path' => '/my-xml-block'
 	),
 	'type' => 'xmlBlock'
 );

@@ -9,7 +9,7 @@ $auth = array ('username' => 'admin', 'password' => 'admin' );
 
 $identifier = array 
 (
-	'path' => array(path => '/my-xml-block'),
+	'path' => array('path' => '/my-xml-block'),
 	'type' => 'block'
 );
 
@@ -20,7 +20,7 @@ if ($reply->readAccessRightsReturn->success=='true')
 {
 	$aclEntries = $reply->readAccessRightsReturn->accessRightsInformation->aclEntries->aclEntry;
                 
-    if (!is_array($aclEntries)) // For less than 2 eleements, the returned object isn't an array
+    if (!is_array($aclEntries)) // For less than 2 elements, the returned object isn't an array
 		$aclEntries=array($aclEntries);
 
 	for($i=0; $i<sizeof($aclEntries); $i++)
