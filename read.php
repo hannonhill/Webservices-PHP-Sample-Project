@@ -9,7 +9,8 @@ $auth = array ('username' => 'admin', 'password' => 'admin' );
 
 $identifier = array 
 (
-	'path' => array('path' => '/my-xml-block'),
+	'path' => array('path' => '/my-xml-block','siteName' => 'nameOfSite'),
+	//OR 'id' => 'string', and then the type
 	'type' => 'block'
 );
 
