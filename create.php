@@ -7,21 +7,13 @@ $client = new SoapClient
 );	
 $auth = array ('username' => 'admin', 'password' => 'admin' );
 
-$identifier = array 
-(
-	'path' => array
-	(
-		'path' => '/my-xml-block'
-	),
-	'type' => 'xmlBlock'
-);
-
 $xmlBlock = array
 (
 	'xml' => '<xml>Test</xml>',
 	'metadataSetPath' => '/Default',
 	'parentFolderPath' => '/',
-	'name' => 'my-xml-block'
+	'name' => 'my-xml-block',
+	'siteName' => 'nameOfSite'
 );
 
 $asset = array('xmlBlock' => $xmlBlock);
